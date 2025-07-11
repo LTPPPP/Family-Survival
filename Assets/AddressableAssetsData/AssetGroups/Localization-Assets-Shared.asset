@@ -18,7 +18,7 @@ MonoBehaviour:
   - m_GUID: 0e5f8d21122b64a7a8459a1c61b9b9d8
     m_Address: NotoSansMonoCJKtc-Regular SDF
     m_ReadOnly: 1
-    m_SerializedLabels:
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36c926595fec5471d984638bc6913d51
     m_Address: Assets/Localization/Tables/Upgradeable Values/Upgradeable Values Shared
