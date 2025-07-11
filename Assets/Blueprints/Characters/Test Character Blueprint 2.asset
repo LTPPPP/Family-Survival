@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Teacher Lan
   m_EditorClassIdentifier: 
   name: Thu Lan
-  owned: 1
-  cost: 799
+  owned: 0
+  cost: 999
   hp: 110
   recovery: 0
   armor: 0
@@ -22,12 +22,10 @@ MonoBehaviour:
   luck: 2
   acceleration: 50
   walkSpriteSequence:
-  - {fileID: -1711853846, guid: 8f2f1cdf6848a4a8495353d4eba4ecea, type: 3}
-  - {fileID: 917104541, guid: 8f2f1cdf6848a4a8495353d4eba4ecea, type: 3}
-  - {fileID: -1159827789, guid: 8f2f1cdf6848a4a8495353d4eba4ecea, type: 3}
-  - {fileID: -1498753039, guid: 8f2f1cdf6848a4a8495353d4eba4ecea, type: 3}
+  - {fileID: 1091210374, guid: bda9aef1b59cd9446822977dddd893a3, type: 3}
+  - {fileID: -770995823, guid: bda9aef1b59cd9446822977dddd893a3, type: 3}
+  - {fileID: 1972793014, guid: bda9aef1b59cd9446822977dddd893a3, type: 3}
+  - {fileID: -478395885, guid: bda9aef1b59cd9446822977dddd893a3, type: 3}
   walkFrameTime: 0.1
   startingAbilities:
-  - {fileID: 7378740072262091319, guid: 83d30b9611c244f46b7a4bfc51d0276c, type: 3}
-  - {fileID: 7378740072262091319, guid: 1f4699d7a46c44170930119aed6fe806, type: 3}
   - {fileID: 7378740072262091319, guid: 239414c0d2c944c0d9acb1762a720983, type: 3}
