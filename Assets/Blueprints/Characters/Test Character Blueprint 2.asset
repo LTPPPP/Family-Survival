@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cebba9219e8740668e9101e947a97e4, type: 3}
-  m_Name: Test Character Blueprint 2
+  m_Name: Teacher Lan
   m_EditorClassIdentifier: 
-  name: Test
-  owned: 0
+  name: Thu Lan
+  owned: 1
   cost: 799
   hp: 110
   recovery: 0
