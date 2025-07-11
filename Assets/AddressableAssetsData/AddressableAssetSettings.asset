@@ -114,9 +114,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Locale
-    - Locale-zh
     - Preload
-    - Locale-zh-Hant
     - Locale-en
   m_SchemaTemplates: []
   m_GroupTemplateObjects:

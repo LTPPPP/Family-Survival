@@ -19,8 +19,6 @@ MonoBehaviour:
     m_Address: NotoSansMonoCJKtc-Regular SDF
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-zh
-    - Locale-zh-Hant
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36c926595fec5471d984638bc6913d51
     m_Address: Assets/Localization/Tables/Upgradeable Values/Upgradeable Values Shared

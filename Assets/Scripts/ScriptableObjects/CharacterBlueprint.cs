@@ -5,14 +5,14 @@ namespace Vampire
     [CreateAssetMenu(fileName = "Character", menuName = "Blueprints/Character", order = 1)]
     public class CharacterBlueprint : ScriptableObject
     {
-        public new string name;  // 名字
+        public new string name;
         public bool owned = false;
         public int cost = 999;
-        public float hp;  // 血量
-        public float recovery;  // 血量恢復再生率
-        public int armor;  // 裝甲減傷
-        public float movespeed;  // 移動速度
-        public float luck;  // 運氣
+        public float hp;
+        public float recovery;
+        public int armor;
+        public float movespeed;
+        public float luck;
         public float acceleration;
         public Sprite[] walkSpriteSequence;
         public float walkFrameTime;
