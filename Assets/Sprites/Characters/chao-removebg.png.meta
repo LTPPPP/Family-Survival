@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58a303e4fda275141b7fb6f482a1088a
+guid: 1450d9c1ae980d14b9e0d553345d741a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: laptop-removebg_0
+      name: chao-removebg_0
       rect:
         serializedVersion: 2
-        x: 205
-        y: 310
-        width: 96
-        height: 69
+        x: 34
+        y: 166
+        width: 87
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 068e432817c026c49ab7b8409c6ef7b7
-      internalID: -1973246931
+      spriteID: 3212c2199f67fbd4eb935fe4995d6f31
+      internalID: -1985573215
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a843c7e4c451d6f4e89ee905634a1bb4
+    spriteID: 42b6392875ecfb045879ba5546ff3f9f
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      laptop-removebg_0: -1973246931
+      chao-removebg_0: -1985573215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
