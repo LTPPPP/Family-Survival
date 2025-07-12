@@ -11,12 +11,26 @@ namespace Vampire
         void Start()
         {
             coinText = GetComponent<TextMeshProUGUI>();
-            coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            UpdateDisplay();
+
+            // Đăng ký event để tự động cập nhật khi coin thay đổi
+            PlayerDataManager.OnCoinsChanged += OnCoinsChanged;
+        }
+
+        void OnDestroy()
+        {
+            // Hủy đăng ký event khi object bị destroy
+            PlayerDataManager.OnCoinsChanged -= OnCoinsChanged;
+        }
+
+        private void OnCoinsChanged(int newCoinAmount)
+        {
+            UpdateDisplay();
         }
 
         public void UpdateDisplay()
         {
-            coinText.text = PlayerPrefs.GetInt("Coins").ToString();
+            coinText.text = PlayerDataManager.Instance.GetCoins().ToString();
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Vampire
             nameText.text = characterBlueprint.name.ToString();
             hpText.text = characterBlueprint.hp.ToString();
             armorText.text = characterBlueprint.armor.ToString();
-            mvspdText.text = Mathf.RoundToInt(characterBlueprint.movespeed/1.15f * 100f).ToString()+"%";
+            mvspdText.text = Mathf.RoundToInt(characterBlueprint.movespeed / 1.15f * 100f).ToString() + "%";
             luckText.text = characterBlueprint.luck.ToString();
             UpdateButtonText();
             buttonImage.color = characterBlueprint.owned ? selectColor : buyColor;
@@ -70,25 +70,25 @@ namespace Vampire
         {
             // Character image layout
             float yHeight = Mathf.Abs(characterImageRect.sizeDelta.y);
-            float xWidth = characterBlueprint.walkSpriteSequence[0].textureRect.width / (float) characterBlueprint.walkSpriteSequence[0].textureRect.height * yHeight;
+            float xWidth = characterBlueprint.walkSpriteSequence[0].textureRect.width / (float)characterBlueprint.walkSpriteSequence[0].textureRect.height * yHeight;
             if (xWidth > Mathf.Abs(characterImageRect.sizeDelta.x))
             {
                 xWidth = Mathf.Abs(characterImageRect.sizeDelta.x);
-                yHeight = characterBlueprint.walkSpriteSequence[0].textureRect.height / (float) characterBlueprint.walkSpriteSequence[0].textureRect.width * xWidth;
+                yHeight = characterBlueprint.walkSpriteSequence[0].textureRect.height / (float)characterBlueprint.walkSpriteSequence[0].textureRect.width * xWidth;
             }
             ((RectTransform)characterImage.transform).sizeDelta = new Vector2(xWidth, yHeight);
-            
+
             // Character abilities layout
             float maxImageWidth = startingAbilitiesRectSize.x / startingAbilityContainers.Length;
             for (int i = 0; i < startingAbilityContainers.Length; i++)
             {
                 StartingAbilityContainer startingAbilityContainer = startingAbilityContainers[i];
                 float imageHeight = startingAbilitiesRectSize.y;
-                float imageWidth = startingAbilityContainer.AbilityImage.sprite.textureRect.width / (float) startingAbilityContainer.AbilityImage.sprite.textureRect.height * imageHeight;
+                float imageWidth = startingAbilityContainer.AbilityImage.sprite.textureRect.width / (float)startingAbilityContainer.AbilityImage.sprite.textureRect.height * imageHeight;
                 if (imageWidth > maxImageWidth)
                 {
                     imageWidth = maxImageWidth;
-                    imageHeight = startingAbilityContainer.AbilityImage.sprite.textureRect.height / (float) startingAbilityContainer.AbilityImage.sprite.textureRect.width * imageWidth;
+                    imageHeight = startingAbilityContainer.AbilityImage.sprite.textureRect.height / (float)startingAbilityContainer.AbilityImage.sprite.textureRect.width * imageWidth;
                 }
                 startingAbilityContainer.ImageRect.sizeDelta = new Vector2(imageWidth, imageHeight);
             }
@@ -98,10 +98,8 @@ namespace Vampire
         {
             if (!characterBlueprint.owned)
             {
-                int coinCount = PlayerPrefs.GetInt("Coins");
-                if (coinCount >= characterBlueprint.cost)
+                if (PlayerDataManager.Instance.SpendCoins(characterBlueprint.cost))
                 {
-                    PlayerPrefs.SetInt("Coins", coinCount - characterBlueprint.cost);
                     characterBlueprint.owned = true;
                     UpdateButtonText();
                     buttonImage.color = selectColor;
@@ -115,14 +113,14 @@ namespace Vampire
         }
 
         private void UpdateButtonText(string text)
-        { 
+        {
             UpdateButtonText();
         }
-        
+
         private void UpdateButtonText()
         {
             if (!initialized) return;
-            
+
             if (characterBlueprint.owned)
             {
                 buttonText.text = selectLocalization.GetLocalizedString();

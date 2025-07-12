@@ -25,7 +25,10 @@ namespace Vampire
         {
             this.levelBlueprint = levelBlueprint;
             levelTime = 0;
-            
+
+            // Bắt đầu session mới với PlayerDataManager
+            PlayerDataManager.Instance.StartNewSession();
+
             // Initialize the entity manager
             entityManager.Init(this.levelBlueprint, playerCharacter, inventory, statsManager, infiniteBackground, abilitySelectionDialog);
             // Initialize the ability manager
@@ -56,15 +59,20 @@ namespace Vampire
             // Time
             levelTime += Time.deltaTime;
             gameTimer.SetTime(levelTime);
+
+            // Cập nhật session time và score cho PlayerDataManager
+            PlayerDataManager.Instance.UpdateSessionTime(levelTime);
+            PlayerDataManager.Instance.UpdateSessionScore(CalculateCurrentScore());
+
             // Monster spawning timer
             if (levelTime < levelBlueprint.levelTime)
             {
                 timeSinceLastMonsterSpawned += Time.deltaTime;
-                float spawnRate = levelBlueprint.monsterSpawnTable.GetSpawnRate(levelTime/levelBlueprint.levelTime);
-                float monsterSpawnDelay = spawnRate > 0 ? 1.0f/spawnRate : float.PositiveInfinity;
+                float spawnRate = levelBlueprint.monsterSpawnTable.GetSpawnRate(levelTime / levelBlueprint.levelTime);
+                float monsterSpawnDelay = spawnRate > 0 ? 1.0f / spawnRate : float.PositiveInfinity;
                 if (timeSinceLastMonsterSpawned >= monsterSpawnDelay)
                 {
-                    (int monsterIndex, float hpMultiplier) = levelBlueprint.monsterSpawnTable.SelectMonsterWithHPMultiplier(levelTime/levelBlueprint.levelTime);
+                    (int monsterIndex, float hpMultiplier) = levelBlueprint.monsterSpawnTable.SelectMonsterWithHPMultiplier(levelTime / levelBlueprint.levelTime);
                     (int poolIndex, int blueprintIndex) = levelBlueprint.MonsterIndexMap[monsterIndex];
                     MonsterBlueprint monsterBlueprint = levelBlueprint.monsters[poolIndex].monsterBlueprints[blueprintIndex];
                     entityManager.SpawnMonsterRandomPosition(poolIndex, monsterBlueprint, monsterBlueprint.hp * hpMultiplier);
@@ -97,20 +105,33 @@ namespace Vampire
             }
         }
 
+        /// <summary>
+        /// Tính điểm hiện tại dựa trên các yếu tố game
+        /// </summary>
+        private int CalculateCurrentScore()
+        {
+            // Công thức tính điểm: enemies killed * 100 + survival time * 10 + coins * 5
+            return statsManager.MonstersKilled * 100 +
+                   Mathf.FloorToInt(levelTime * 10) +
+                   statsManager.CoinsGained * 5;
+        }
+
         public void GameOver()
         {
             Time.timeScale = 0;
-            int coinCount = PlayerPrefs.GetInt("Coins");
-            PlayerPrefs.SetInt("Coins", coinCount + statsManager.CoinsGained);
-            gameOverDialog.Open(false, statsManager);
+
+            // Kết thúc session và lưu dữ liệu
+            SessionResult sessionResult = PlayerDataManager.Instance.EndSession(statsManager);
+            gameOverDialog.Open(false, statsManager, sessionResult);
         }
 
         public void LevelPassed(Monster finalBossKilled)
         {
             Time.timeScale = 0;
-            int coinCount = PlayerPrefs.GetInt("Coins");
-            PlayerPrefs.SetInt("Coins", coinCount + statsManager.CoinsGained);
-            gameOverDialog.Open(true, statsManager);
+
+            // Kết thúc session và lưu dữ liệu
+            SessionResult sessionResult = PlayerDataManager.Instance.EndSession(statsManager);
+            gameOverDialog.Open(true, statsManager, sessionResult);
         }
 
         public void Restart()
