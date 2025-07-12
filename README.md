@@ -156,7 +156,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Project Link: [https://github.com/LTPPPP/Family-Survival](https://github.com/LTPPPP/Family-Survival
+Project Link: [https://github.com/LTPPPP/Family-Survival](https://github.com/LTPPPP/Family-Survival)
 
 ---
 
